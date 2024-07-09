@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadoras de Efectividad</title>
+    <link rel="stylesheet" href="../css/calculadora.css">
+    <style>
+        iframe {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="menu-icon" onclick="showSidebar()">&#9776;</div>
+    </header>
+
+    <header class="navbar">
+        <div class="logo"></div>
+        <nav class="menu">
+            <div class="menu-item"><a href="../inicio.html">Inicio</a></div>
+            <div class="menu-item"><a href="./definicion.html">Definiciones</a></div>
+            <div class="menu-item"><a href="./curriculums.html">Curriculums</a></div>
+            <div class="menu-item"><a href="./calculadora.html">Calculadoras</a></div>
+        </nav>
+    </header>
+    <h1>Calculadoras</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Calculadora</th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td onclick="toggleIframe('iframe1')">Efectividad Cotidiana</td>
+                <td>Calculadora para la efectividad cotidiana</td>
+            </tr>
+            <tr>
+                <td onclick="toggleIframe('iframe2')">Efectividad Empresarial</td>
+                <td>Calculadora para la efectividad empresarial</td>
+            </tr>
+            <tr>
+                <td onclick="toggleIframe('iframe3')">Efectividad Eficiencia Eficacia</td>
+                <td>Calculadora para la efectividad, eficiencia y eficacia</td>
+            </tr>
+            <tr>
+                <td onclick="toggleIframe('iframe4')">RIO</td>
+                <td>Calculadora para el Retorno sobre la Inversión (RIO)</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div id="iframes-container">
+        <iframe id="iframe1" src="./efectividad_cotidiana.html" frameborder="0" width="100%" height="600px"></iframe>
+        <iframe id="iframe2" src="./efectividad_empresarial.html" frameborder="0" width="100%" height="600px"></iframe>
+        <iframe id="iframe3" src="./efectividad_eficiencia_eficacia.html" frameborder="0" width="100%" height="600px"></iframe>
+        <iframe id="iframe4" src="./rio.html" frameborder="0" width="100%" height="600px"></iframe>
+    </div>
+    
+    <script>
+        function toggleIframe(iframeId) {
+            var iframes = document.querySelectorAll('#iframes-container iframe');
+            for (var i = 0; i < iframes.length; i++) {
+                iframes[i].style.display = 'none';
+            }
+            var iframeToShow = document.getElementById(iframeId);
+            if (iframeToShow) {
+                iframeToShow.style.display = 'block';
+                // Agregar botón de cerrar dentro del iframe mostrado
+                var closeButton = document.createElement('button');
+                closeButton.textContent = 'Cerrar';
+                closeButton.addEventListener('click', function() {
+                    iframeToShow.style.display = 'none';
+                });
+                iframeToShow.contentDocument.body.appendChild(closeButton);
+            }
+        }
+    </script>
+</body>
+</html>
